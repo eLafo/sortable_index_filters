@@ -1,7 +1,14 @@
 module IndexOrderHelper 
 
-  def sortable_field_header(header, field)
-    link_to(header, :action => :index, :index_order_field => field.to_s, :index_order_direction => get_sortable_field_order(field.to_s)[:index_order_direction], :filter => @filter)
+  def sortable_field(name, field, options = {}, html_options = {})
+    
+    options.merge!({
+      :action                => :index, 
+      :index_order_field     => field.to_s, 
+      :index_order_direction => get_sortable_field_order(field.to_s)[:index_order_direction], 
+      :filter                => @filter
+    })
+    link_to(name, options, html_options)
   end
 
   private
