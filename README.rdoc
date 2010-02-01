@@ -1,0 +1,63 @@
+==Index filter
+
+It creates two objects:
+
+  -an object @conditions to be used in index action with our favourite find method which accepts :conditions parameter,
+   such as find or paginate -from will paginate-.
+
+  -an object @filter which is the result of parsing params[:filter]
+
+==Installation
+
+  script/plugin install git://github.com/eLafo/index-filter.git
+
+==Instructions
+
+In order to setup a filter for index action, you should to insert the next line in your controller
+
+  has_index_filters :method => :option
+
+You can declare as many method as you wish
+Available options are:
+
+  :like - in order to create a LIKE condition
+  :equal - in order to create a = condition
+
+For example, the next line
+
+  has_index_filters :code => :like, :client_id => :equal
+
+finally will create next conditions:
+
+  code LIKE '%CODE_PARAMETER%' AND client_id = CLIENT_ID_PARAMETER
+
+
+In the index view, you should insert a form for submiting filter parameters. The form's fields should be named filter[method] for this plugin to work.
+
+For the previous example, the fields would be
+
+  - filter[code]
+  - filter[client_id]
+
+and the view could be like this:
+
+  <%=  form_tag foos_url, :method => :get %>
+        <%= text_field_tag 'filter[code]', (@filter[:code] rescue '')   %>
+        <%= text_field_tag 'filter[client_id], (@filter[:client_id] rescue '') %>
+    <%= submit_tag 'filter' %>
+  </form>
+
+
+==Notes
+
+  This plugin is based on my mentor Daniel Mata's code http://danimataonrails.blogspot.com
+
+
+== Copyright
+
+(C) 2010 {ASPgems S.L.}[http://www.aspgems.com]
+
+
+== License
+
+This code is available under the MIT license.
