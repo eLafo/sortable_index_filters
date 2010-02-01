@@ -2,8 +2,8 @@
 
 This plugin gives us two functionalities
 
-	-filters for narrowing index scope
-	-ordenation for index elements
+  -filters for narrowing index scope
+  -ordenation for index elements
 
 
 
@@ -61,25 +61,25 @@ and the view could be like this:
 
 If you want your index elements to be sortable by fields, you must include this line in your controller
 
-	has_sortable_fields
+  has_sortable_fields
 
 Controller will expect two params:
 
-	index_order_field: The field which index results are sorted by
-	index_order_direction: The sorting direction -ASC or DESC
+  index_order_field: The field which index results are sorted by
+  index_order_direction: The sorting direction -ASC or DESC
 
 You can use the helper 
-	
-	method sortable_field(name, field, options = {}, html_options = {})
-	
-	It creates a link to index url with index_order_field and index_order_direction params
+  
+  method sortable_field(name, field, options = {}, html_options = {})
+  
+It creates a link to index url with index_order_field and index_order_direction params
 
-	name: name for the link
-	field: field for index elements to be sorted by
+  name: name for the link
+  field: field for index elements to be sorted by
 
 Example
 
-	<%= sortable_field('code', :code) %></th>
+  <%= sortable_field('code', :code) %></th>
 
 
 ==Notes
