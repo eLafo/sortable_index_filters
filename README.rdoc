@@ -29,8 +29,12 @@ In order to setup a filter for index action, you should to insert the next line 
 You can declare as many method as you wish
 Available options are:
 
-  :like - in order to create a LIKE condition
-  :equal - in order to create a = condition
+  :like             - it creates a LIKE condition
+  :equal            - it creates a = condition
+	:less             - it creates a < condition
+	:less_or_equal    - it creates a <= condition
+	:greater          - it creates a > condition
+	:greater_or_equal - it creates a >= condition
 
 For example, the next line
 
