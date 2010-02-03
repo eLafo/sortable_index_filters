@@ -31,10 +31,10 @@ Available options are:
 
   :like             - it creates a LIKE condition
   :equal            - it creates a = condition
-	:less             - it creates a < condition
-	:less_or_equal    - it creates a <= condition
-	:greater          - it creates a > condition
-	:greater_or_equal - it creates a >= condition
+  :less             - it creates a < condition
+  :less_or_equal    - it creates a <= condition
+  :greater          - it creates a > condition
+  :greater_or_equal - it creates a >= condition
 
 For example, the next line
 
