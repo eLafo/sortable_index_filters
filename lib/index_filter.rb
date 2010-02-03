@@ -13,8 +13,7 @@ module IndexFilter
 
       define_method('add_conditions') do
         unless @filter.blank?
-          methods.keys.each do |method|
-            logger.info "argument: #{method}"
+          methods.keys.each do |method| logger.info "argument: #{method}"
             unless @filter[method].blank?
               case methods[method]
                 when :like then
@@ -22,6 +21,18 @@ module IndexFilter
                   @conditions << "%#{@filter[method]}%"
                 when :equal then
                   @conditions[0] << " AND #{method.to_s} = ? "
+                  @conditions << "#{@filter[method]}"
+                when :greater then
+                  @conditions[0] << " AND #{method.to_s} > ? "
+                  @conditions << "#{@filter[method]}"
+                when :less then
+                  @conditions[0] << " AND #{method.to_s} < ? "
+                  @conditions << "#{@filter[method]}"
+                when :greater_or_equal then
+                  @conditions[0] << " AND #{method.to_s} >= ? "
+                  @conditions << "#{@filter[method]}"
+                when :less_or_equal then
+                  @conditions[0] << " AND #{method.to_s} <= ? "
                   @conditions << "#{@filter[method]}"
               end
             end
